@@ -6,7 +6,7 @@ import { Button } from '../ui/button'
 import { useSelector } from 'react-redux'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import axios from 'axios'
-import { JOB_API_END_POINT } from '@/utils/constant'
+// import { JOB_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
@@ -14,6 +14,7 @@ import { Loader2 } from 'lucide-react'
 const companyArray = [];
 
 const PostJob = () => {
+    const apiUrl = import.meta.env.VITE_JOB_API_END_POINT
     const [input, setInput] = useState({
         title: "",
         description: "",
@@ -42,7 +43,7 @@ const PostJob = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await axios.post(`${JOB_API_END_POINT}/post`, input,{
+            const res = await axios.post(`${apiUrl}/post`, input,{
                 headers:{
                     'Content-Type':'application/json'
                 },
