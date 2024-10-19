@@ -59,7 +59,7 @@ const Signup = () => {
                 headers: { 'Content-Type': "multipart/form-data",
                     "Accept": "application/json" 
                 },
-                
+               withCredentials: true, 
             });
             console.log(res)
             if (res.data.success) {
